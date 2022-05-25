@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-from app.domain.manga import MangaList
+from src.domain.manga import MangaList
 
 
 class MangaUsecaseContract(metaclass=ABCMeta):
