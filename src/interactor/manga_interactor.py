@@ -1,6 +1,6 @@
-from ..domain.manga import MangaList
-from ..interface.usecase.manga_usecase import MangaUsecase
-from ..interface.repository.manga_repository import MangaRepository
+from src.domain.manga import MangaList
+from src.interface.usecase.manga_usecase import MangaUsecase
+from src.interface.repository.manga_repository import MangaRepository
 
 
 class MangaInteractor(MangaUsecase):
