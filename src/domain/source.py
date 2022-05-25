@@ -4,12 +4,14 @@ from typing import List
 from src.domain.collection import MappableCollection
 
 
-@dataclass(frozen=True)
-class Category:
+@dataclass
+class Source:
     id: str
     name: str
+    url: str
+    thumbnail: str
 
 
-@dataclass(frozen=True)
-class Categories(MappableCollection[Category]):
-    values: List[Category]
+@dataclass
+class SourceList(MappableCollection[Source]):
+    values: List[Source]
