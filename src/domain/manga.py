@@ -1,6 +1,8 @@
 from typing import Collection, List
 from dataclasses import dataclass
 
+from .collection import MappableCollection
+
 from .category import Category
 
 
@@ -13,5 +15,5 @@ class Manga:
 
 
 @dataclass(frozen=True)
-class MangaList(Collection[Manga]):
+class MangaList(MappableCollection[Manga]):
     values: List[Manga]

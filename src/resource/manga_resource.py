@@ -3,13 +3,13 @@ import asyncio
 from flask import jsonify
 
 from src.domain.manga import Manga, MangaList
-from src.interface.usecase.manga_usecase import MangaUsecase
+from src.interface.usecase.manga_usecase import MangaUsecaseAbstract
 
 
 class MangaResource:
-    manga_usecase: MangaUsecase
+    manga_usecase: MangaUsecaseAbstract
 
-    def __init__(self, manga_usecase: MangaUsecase) -> None:
+    def __init__(self, manga_usecase: MangaUsecaseAbstract) -> None:
         self.manga_usecase = manga_usecase
 
     def latest(self):
@@ -19,8 +19,18 @@ class MangaResource:
 
 def manga_response(manga_list: MangaList) -> dict:
     return {
-        "results": [{
-            "id": manga.id,
-            "body": manga.body
-        } for manga in manga_list.values]
+        'results':
+            [
+                {
+                    'id': manga.id,
+                    'title': manga.title,
+                    'thumbnail': manga.thumbnail,
+                    'categories': [
+                        {
+                            'id': c.id,
+                            'name': c.name
+                        } for c in manga.categories
+                    ]
+                } for manga in manga_list.values
+            ]
     }
