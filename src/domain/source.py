@@ -8,10 +8,9 @@ from src.domain.collection import MappableCollection
 class Source:
     id: str
     name: str
-    url: str
     thumbnail: str
 
 
 @dataclass
-class SourceList(MappableCollection[Source]):
+class Sources(list[Source]):
     values: List[Source]
